@@ -13,11 +13,16 @@ import { expressLogger } from './logger/winston.config';
 
 // Controllers
 import { AppController } from './app.controller';
+import { FfmpegController } from './ffmpeg/ffmpeg.controller';
+
+// Services
+import { FileService } from './file/file.service';
+import { FfmpegService } from './ffmpeg/ffmpeg.service';
 
 @Module({
   imports: [CommonModule, HttpModule, ConfigModule.forRoot(configModuleOptions)],
-  controllers: [AppController],
-  providers: [],
+  controllers: [AppController, FfmpegController],
+  providers: [FileService, FfmpegService],
 })
 export class AppModule implements NestModule {
   constructor() {}
