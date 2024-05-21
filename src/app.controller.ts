@@ -7,8 +7,8 @@ export class AppController {
   constructor(private configService: ConfigService) {}
 
   @Get('ping')
-  @ApiOperation({ summary: 'Test API connection' })
-  @ApiResponse({ status: 200, description: 'API working' })
+  @ApiOperation({ summary: 'Test Service connection' })
+  @ApiResponse({ status: 200, description: 'Service working' })
   ping() {
     const name = this.configService.get('name');
     const port = this.configService.get('port');
