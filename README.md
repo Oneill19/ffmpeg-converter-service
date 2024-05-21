@@ -20,7 +20,7 @@ When the program start a message will be shown:
   Username: oneill
 ```
 
-For testing the app is working properly, there is a `ping` middleware:
+For testing the app is working properly, there is a `ping` request:
 
 ```
 http://localhost:3000/api/ping
