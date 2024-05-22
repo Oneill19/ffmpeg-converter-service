@@ -43,8 +43,12 @@ export class FfmpegController {
       required: ['inputFormat', 'outputFormat', 'file'],
     },
   })
-  async convertSingleFile(@UploadedFiles() files, @Body() converFileDto: ConvertFileDto, @Res() res: Response) {
-    if (!files || files.length === 0) {
+  async convertSingleFile(
+    @UploadedFiles() files: Express.Multer.File,
+    @Body() converFileDto: ConvertFileDto,
+    @Res() res: Response,
+  ) {
+    if (!files) {
       return res.status(400).send('No files uploaded');
     }
 
@@ -93,8 +97,12 @@ export class FfmpegController {
       required: ['inputFormat', 'outputFormat', 'files'],
     },
   })
-  async convertMultipleFiles(@UploadedFiles() files, @Body() converFileDto: ConvertFileDto, @Res() res: Response) {
-    if (!files || files.length === 0) {
+  async convertMultipleFiles(
+    @UploadedFiles() files: Express.Multer.File[],
+    @Body() converFileDto: ConvertFileDto,
+    @Res() res: Response,
+  ) {
+    if (!files) {
       return res.status(400).send('No files uploaded');
     }
 
@@ -123,7 +131,7 @@ export class FfmpegController {
 
     res.download(zipPath, () => {
       fs.unlinkSync(zipPath);
-      convertedFiles.forEach((file) => {
+      convertedFiles.forEach((file: { inputPath: string; outputPath: string }) => {
         fs.unlinkSync(file.inputPath);
         fs.unlinkSync(file.outputPath);
       });
