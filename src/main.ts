@@ -35,8 +35,8 @@ async function bootstrap() {
 
   // Init Swagger
   const config = new DocumentBuilder()
-    .setTitle('NestJS Starter Kit')
-    .setDescription('Backend API starter kit using NestJS and Mongo.')
+    .setTitle('FFmpeg Converter Service')
+    .setDescription('FFmpeg converter service using nestjs')
     .setVersion(version)
     .build();
   const document = SwaggerModule.createDocument(app, config);
